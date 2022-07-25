@@ -1,14 +1,12 @@
 <template>
-  <Rain />
+  <div>导航栏|
+    <router-link to="/">Rain</router-link>
+  </div>
+  <router-view/>
 </template>
 
 <script>
-import Rain from './components/Rain.vue'
-
 export default {
   name: 'App',
-  components: {
-    Rain
-  }
 }
 </script>
