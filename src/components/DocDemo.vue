@@ -1,12 +1,12 @@
 <template>
   <div>
-    Switch
+默认
   </div>
 </template>
 
 <script>
 export default {
-  name: "SwitchDemo"
+  name: "DocDemo"
 }
 </script>
 

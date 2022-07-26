@@ -1,12 +1,12 @@
 <template>
   <div>
-    Switch
+    Dialog
   </div>
 </template>
 
 <script>
 export default {
-  name: "SwitchDemo"
+  name: "DialogDemo"
 }
 </script>
 

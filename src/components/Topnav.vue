@@ -36,22 +36,18 @@ export default {
     z-index: 10;
     justify-content: center;
     align-items: center;
-
     > .logo {
       max-width: 6em;
       margin-right: auto;
     }
-
     > .menu {
       display: flex;
       white-space: nowrap;
       flex-wrap: nowrap;
-
       > li {
         margin: 0 1em;
       }
     }
-
     > .toggleAside {
       width: 24px;
       height: 24px;
@@ -62,7 +58,6 @@ export default {
       transform: translateY(-50%);
       display: none;
     }
-
     @media (max-width: 500px) {
       > .menu {
         display: none;
