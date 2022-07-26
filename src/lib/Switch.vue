@@ -30,7 +30,6 @@ export default {
     background: #bfbfbf;
     border-radius: $h/2;
     position: relative;
-
     > span {
       position: absolute;
       top: 2px;
@@ -41,25 +40,20 @@ export default {
       border-radius: $h2 / 2;
       transition: all 250ms;
     }
-
     &.checked {
       background: #1890ff;
-
       > span {
         left: calc(100% - #{$h2} - 2px);
       }
     }
-
     &:focus {
       outline: none;
     }
-
     &:active {
       > span {
         width: $h2 + 4px;
       }
     }
-
     &.checked:active {
       > span {
         width: $h2 + 4px;
