@@ -2,6 +2,7 @@ import {createRouter, createWebHashHistory} from 'vue-router'
 import Home from './views/Home.vue'
 import Doc from './views/Doc.vue'
 import DocDemo from './components/DocDemo.vue'
+// @ts-ignore
 import SwitchDemo from './components/SwitchDemo.vue'
 import ButtonDemo from './components/ButtonDemo.vue'
 import DialogDemo from './components/DialogDemo.vue'
