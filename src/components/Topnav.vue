@@ -1,10 +1,11 @@
 <template>
   <div class="topnav">
-    <div class="logo" @click="toggleAside">LOGO</div>
+    <div class="logo">LOGO</div>
     <ul class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
     </ul>
+    <span class="toggleAside"  @click="toggleAside"></span>
   </div>
 </template>
 
@@ -14,7 +15,7 @@ import {inject, Ref} from 'vue'
 export default {
   name: 'Topnav',
   setup() {
-    const asideVisible = inject<Ref<boolean>>('xxx')
+    const asideVisible = inject<Ref<boolean>>('asideVisible')
     const toggleAside = () => {
       asideVisible.value = !asideVisible.value
     }

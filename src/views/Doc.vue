@@ -32,7 +32,7 @@ export default {
   name: "Doc",
   components: { Topnav },
   setup() {
-    const asideVisible = inject<Ref<boolean>>('xxx')
+    const asideVisible = inject<Ref<boolean>>('asideVisible')
     return {asideVisible}
   },
 };
