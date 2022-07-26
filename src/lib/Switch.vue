@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button :class="{checked:value}" @click="toggle"><span></span></button>
+    <button class="rain-switch" :class="{'rain-checked':value}" @click="toggle"><span></span></button>
   </div>
 </template>
 
@@ -20,10 +20,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   $h: 22px;
   $h2: $h - 4px;
-  button {
+  .rain-switch {
     height: $h;
     width: $h * 2;
     border: none;
@@ -40,7 +40,7 @@ export default {
       border-radius: $h2 / 2;
       transition: all 250ms;
     }
-    &.checked {
+    &.rain-checked {
       background: #1890ff;
       > span {
         left: calc(100% - #{$h2} - 2px);
@@ -54,7 +54,7 @@ export default {
         width: $h2 + 4px;
       }
     }
-    &.checked:active {
+    &.raub-rain-checked:active {
       > span {
         width: $h2 + 4px;
         margin-left: -4px;
