@@ -1,16 +1,18 @@
 <template>
-  <div class="rain-dialog-overlay"></div>
-  <div class="rain-dialog-wrapper">
-    <div class="rain-dialog">
-      <header>标题</header>
-      <main>
-        <p>第一行字</p>
-        <p>第二行字</p>
-      </main>
-      <footer>
-        <Button>Ok</Button>
-        <Button>Cancel</Button>
-      </footer>
+  <div v-if="visible">
+    <div class="rain-dialog-overlay"></div>
+    <div class="rain-dialog-wrapper">
+      <div class="rain-dialog">
+        <header>标题</header>
+        <main>
+          <p>第一行字</p>
+          <p>第二行字</p>
+        </main>
+        <footer>
+          <Button>Ok</Button>
+          <Button>Cancel</Button>
+        </footer>
+      </div>
     </div>
   </div>
 </template>
@@ -19,6 +21,12 @@
 import Button from './Button.vue'
 
 export default {
+  props: {
+    visible: {
+      type: Boolean,
+      default: false,
+    },
+  },
   name: 'Dialog',
   components: {Button}
 }
@@ -49,7 +57,7 @@ export default {
       transform: translate(-50%, -50%);
       z-index: 11;
     }
-    >header {
+    > header {
       padding: 12px 16px;
       border-bottom: 1px solid $border-color;
       display: flex;
@@ -57,10 +65,10 @@ export default {
       justify-content: space-between;
       font-size: 20px;
     }
-    >main {
+    > main {
       padding: 12px 16px;
     }
-    >footer {
+    > footer {
       border-top: 1px solid $border-color;
       padding: 12px 16px;
       text-align: right;
