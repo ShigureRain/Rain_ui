@@ -36,7 +36,7 @@ export default {
     }
     const showDialog = () => {
       openDialog({
-        title: h('strong', {}, '标题'),
+        title: h('strong', {}, '标题'),   //生成strong标签，内容为 <标题>
         content: '你好',
         closeOnClickOverlay:false,
         ok() {
