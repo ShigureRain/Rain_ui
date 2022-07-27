@@ -1,16 +1,18 @@
 <template>
   <div v-if="visible">
-    <div class="rain-dialog-overlay"></div>
+    <div class="rain-dialog-overlay" @click="onClickOverlay"></div>
     <div class="rain-dialog-wrapper">
       <div class="rain-dialog">
-        <header>标题</header>
+        <header>标题
+          <span class="rain-dialog-close" @click="close"></span>
+        </header>
         <main>
           <p>第一行字</p>
           <p>第二行字</p>
         </main>
         <footer>
-          <Button>Ok</Button>
-          <Button>Cancel</Button>
+          <Button @click="ok">Ok</Button>
+          <Button @click="cancel">Cancel</Button>
         </footer>
       </div>
     </div>
@@ -26,9 +28,40 @@ export default {
       type: Boolean,
       default: false,
     },
+    closeOnClickOverlay: { //是否点击遮罩层关闭
+      type: Boolean,
+      default: true,
+    },
+    ok: {
+      type: Function
+    },
+    cancel: {
+      type: Function
+    }
   },
   name: 'Dialog',
-  components: {Button}
+  components: {Button},
+  setup(props, context) {
+    const close = () => {
+      context.emit('update:visible', false)
+    }
+    const ok = () => {
+      if (props.ok?.() !== false) {  //新语法 等价于 props.ok && props.ok() !== false
+        close()
+      }
+    }
+    const cancel = () => {
+      if (props.cancel?.() !== false) {   //ok 和 cancel 支持 return false 阻止关闭
+        close()
+      }
+    }
+    const onClickOverlay = () => {
+      if (props.closeOnClickOverlay) {
+        close()
+      }
+    }
+    return {close, ok, cancel, onClickOverlay}
+  }
 }
 </script>
 

@@ -2,7 +2,7 @@
   <div>
     <h1>示例1</h1>
     <Button @click="toggle">toggle</Button>
-    <Dialog :visible="visible"/>
+    <Dialog v-model:visible="visible" :cancel="f2" :ok="f1"/>
   </div>
 </template>
 
@@ -19,7 +19,11 @@ export default {
     const toggle = () => {
       visible.value = !visible.value
     }
-    return {visible, toggle}
+    const f1 = () => {
+    }
+    const f2 = () => {
+    }
+    return {visible, toggle, f1, f2}
   }
 }
 </script>
