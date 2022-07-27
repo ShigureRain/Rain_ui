@@ -1,10 +1,13 @@
 <template>
   <div class="rain-tabs">
     <div class="rain-tabs-nav">
-      <div v-for="(t,index) in titles" :key="index" class="rain-tabs-nav-item">{{ t }}</div>
+      <div v-for="(t,index) in titles" :key="index" :class="{selected: t=== selected}" class="rain-tabs-nav-item"
+           @click="select(t)">{{ t }}
+      </div>
     </div>
     <div class="rain-tabs-content">
-      <component :is="c" v-for="(c,index) in defaults" :key="index"/>   <!--  这个标签可以查看组件类型  -->
+      <component :is="c" v-for="(c,index) in defaults" :key="index" :class="{selected: c.props.title === selected }"/>
+      <!--  这个标签可以查看组件类型  -->
     </div>
   </div>
 </template>
@@ -14,6 +17,11 @@ import Tab from './Tab.vue'
 
 export default {
   name: 'Tabs',
+  props:{
+    selected:{
+      type:String
+    }
+  },
   setup(props, context) {
     const defaults = context.slots.default()    //获取子组件的类型
     // console.log(defaults[0].type === Tab)   //插入的组件类型判断
@@ -25,7 +33,10 @@ export default {
     const titles = defaults.map((tag) => {
       return tag.props.title
     })
-    return {defaults, titles}
+    const select = (title: string) => {
+      context.emit('update:selected', title)
+    }
+    return {defaults, titles, select}
   }
 }
 </script>
