@@ -1,5 +1,6 @@
 <template>
-  <button :class='classes' class="rain-button">
+  <button :class='classes' class="rain-button" :disabled="disabled">
+    <span v-if="loading" class="rain-loadingIndicator"></span>
     <slot/>
   </button>
 </template>
@@ -21,6 +22,14 @@ export default {
     level: {
       type: String,
       default: 'normal'
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    loading: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props) {
