@@ -1,14 +1,33 @@
 <template>
-  <button :class="`rain-theme-${theme}`" class="rain-button">
+  <button :class='classes' class="rain-button">
     <slot/>
   </button>
 </template>
 
 <script lang="ts">
+import {computed} from 'vue'
+
 export default {
   name: 'Button',
   props: {
-    theme: String
+    theme: {
+      type: String,
+      default: 'button'
+    },
+    size: {
+      type: String,
+      default: 'normal'
+    }
+  },
+  setup(props) {
+    const {theme, size} = props
+    const classes = computed(() => {
+      return {
+        [`rain-theme-${theme}`]: theme,
+        [`rain-size-${size}`]: size,
+      }
+    })
+    return {classes}
   }
 }
 </script>
