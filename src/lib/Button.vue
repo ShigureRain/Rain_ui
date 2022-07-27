@@ -17,14 +17,19 @@ export default {
     size: {
       type: String,
       default: 'normal'
+    },
+    level: {
+      type: String,
+      default: 'normal'
     }
   },
   setup(props) {
-    const {theme, size} = props
+    const {theme, size, level} = props
     const classes = computed(() => {
       return {
         [`rain-theme-${theme}`]: theme,
         [`rain-size-${size}`]: size,
+        [`rain-level-${level}`]: level,
       }
     })
     return {classes}
@@ -54,7 +59,7 @@ export default {
     color: $color;
     border: 1px solid $border-color;
     border-radius: $radius;
-    box-shadow: 0 1px 0 fade-out(black, 0.95); /* fade-out 透明度 */
+    box-shadow: 0 1px 0 fade-out(black, 0.95);
     transition: background 250ms;
     & + & {
       margin-left: 8px;
@@ -71,6 +76,7 @@ export default {
       border: 0;
     }
     &.rain-theme-link {
+      background-color: transparent;
       border-color: transparent;
       box-shadow: none;
       color: $blue;
@@ -169,10 +175,10 @@ export default {
       border-color: $blue $blue $blue transparent;
       border-style: solid;
       border-width: 2px;
-      animation: rain-spin 1s infinite linear;
+      animation: gulu-spin 1s infinite linear;
     }
   }
-  @keyframes rain-spin {
+  @keyframes gulu-spin {
     0% {
       transform: rotate(0deg)
     }

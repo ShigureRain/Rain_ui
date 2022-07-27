@@ -54,7 +54,7 @@ export default {
         width: $h2 + 4px;
       }
     }
-    &.raub-rain-checked:active {
+    &.rain-rain-checked:active {
       > span {
         width: $h2 + 4px;
         margin-left: -4px;
