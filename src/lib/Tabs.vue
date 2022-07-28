@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="rain-tabs-content">
-      <component :is="c" v-for="(c,index) in defaults" :key="index" :class="{selected: c.props.title === selected }"/>
+      <component :is="c" v-for="(c,index) in defaults" :key="index" :class="{selected: c.props.title === selected }" class="rain-tabs-content-item"/>
       <!--  这个标签可以查看组件类型  -->
     </div>
   </div>
@@ -17,9 +17,9 @@ import Tab from './Tab.vue'
 
 export default {
   name: 'Tabs',
-  props:{
-    selected:{
-      type:String
+  props: {
+    selected: {
+      type: String
     }
   },
   setup(props, context) {
@@ -74,6 +74,12 @@ export default {
     }
     &-content {
       padding: 8px 0;
+      &-item {
+        display: none;
+        &.selected{
+          display: block;
+        }
+      }
     }
   }
 </style>
