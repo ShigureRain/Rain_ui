@@ -1,12 +1,16 @@
 <template>
   <div class="rain-tabs">
-    <div class="rain-tabs-nav">
-      <div v-for="(t,index) in titles" :key="index" :class="{selected: t=== selected}" class="rain-tabs-nav-item"
-           @click="select(t)">{{ t }}
+    <div ref="container" class="rain-tabs-nav">
+      <div v-for="(t,index) in titles" :key="index" :ref="el => { if (el) navItems[index] = el }"
+           :class="{selected: t=== selected}"
+           class="rain-tabs-nav-item" @click="select(t)">
+        {{ t }}
       </div>
+      <div ref="indicator" class="rain-tabs-nav-indicator"></div>
     </div>
     <div class="rain-tabs-content">
-      <component :is="c" v-for="(c,index) in defaults" :key="index" :class="{selected: c.props.title === selected }" class="rain-tabs-content-item"/>
+      <component :is="c" v-for="(c,index) in defaults" :key="index" :class="{selected: c.props.title === selected }"
+                 class="rain-tabs-content-item"/>
       <!--  这个标签可以查看组件类型  -->
     </div>
   </div>
@@ -14,6 +18,7 @@
 
 <script lang="ts">
 import Tab from './Tab.vue'
+import {onMounted, onUpdated, ref} from 'vue'
 
 export default {
   name: 'Tabs',
@@ -23,6 +28,22 @@ export default {
     }
   },
   setup(props, context) {
+    const navItems = ref<HTMLDivElement[]>([])
+    const indicator = ref<HTMLDivElement>(null)
+    const container = ref<HTMLDivElement>(null)
+    const x = () => {
+      const divs = navItems.value
+      const result = divs.filter(div => div.classList.contains('selected'))[0]
+      const {width} = result.getBoundingClientRect()
+      indicator.value.style.width = width + 'px'
+      const {left: left1} = container.value.getBoundingClientRect()
+      const {left: left2} = result.getBoundingClientRect()
+      const left = left2 - left1
+      indicator.value.style.left = left + 'px'
+    }
+    onMounted(x)
+    onUpdated(x)
+
     const defaults = context.slots.default()    //获取子组件的类型
     // console.log(defaults[0].type === Tab)   //插入的组件类型判断
     defaults.forEach((tag) => {
@@ -36,7 +57,7 @@ export default {
     const select = (title: string) => {
       context.emit('update:selected', title)
     }
-    return {defaults, titles, select}
+    return {navItems, indicator, container, defaults, titles, select}
   }
 }
 </script>
@@ -76,7 +97,7 @@ export default {
       padding: 8px 0;
       &-item {
         display: none;
-        &.selected{
+        &.selected {
           display: block;
         }
       }
