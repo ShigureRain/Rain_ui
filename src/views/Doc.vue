@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <Topnav class="nav"/>
+    <Topnav toggleMenuButtonVisible class="nav"/>
     <div class="content">
       <aside v-if="asideVisible">
         <h2>组件列表</h2>
@@ -45,10 +45,10 @@ export default {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    > .nav {
+    >.nav {
       flex-shrink: 0;
     }
-    > .content {
+    >.content {
       flex-grow: 1;
       padding-top: 60px;
       padding-left: 156px;
@@ -59,29 +59,28 @@ export default {
   }
   .content {
     display: flex;
-    > aside {
+    >aside {
       flex-shrink: 0;
     }
-    > main {
+    >main {
       flex-grow: 1;
       padding: 16px;
-      background: lightgreen;
+      background: white;
     }
   }
   aside {
     background: lightblue;
     width: 150px;
-    padding: 16px;
     position: fixed;
     top: 0;
     left: 0;
-    padding-top: 70px;
+    padding: 70px 16px 16px;
     height: 100%;
-    > h2 {
+    >h2 {
       margin-bottom: 4px;
     }
-    > ol {
-      > li {
+    >ol {
+      >li {
         padding: 4px 0;
       }
     }
