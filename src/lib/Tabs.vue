@@ -9,8 +9,7 @@
       <div ref="indicator" class="rain-tabs-nav-indicator"></div>
     </div>
     <div class="rain-tabs-content">
-      <component :is="c" v-for="(c,index) in defaults" :key="index" :class="{selected: c.props.title === selected }"
-                 class="rain-tabs-content-item"/>
+      <component :is="current" :key="current.props.title"/>
       <!--  这个标签可以查看组件类型  -->
     </div>
   </div>
@@ -18,7 +17,7 @@
 
 <script lang="ts">
 import Tab from './Tab.vue'
-import {onMounted, ref, watchEffect} from 'vue'
+import {computed, onMounted, ref, watchEffect} from 'vue'
 
 export default {
   name: 'Tabs',
@@ -49,13 +48,17 @@ export default {
         throw new Error('Tabs 子标签必须是 Tab')
       }
     })
+    const current = computed(() => {
+      return defaults.find(tag => tag.props.title === props.selected)
+    })
+
     const titles = defaults.map((tag) => {
       return tag.props.title
     })
     const select = (title: string) => {
       context.emit('update:selected', title)
     }
-    return {selectedItem, indicator, container, defaults, titles, select}
+    return {selectedItem, indicator, container, defaults, current, titles, select}
   }
 }
 </script>
@@ -93,12 +96,6 @@ export default {
     }
     &-content {
       padding: 8px 0;
-      &-item {
-        display: none;
-        &.selected {
-          display: block;
-        }
-      }
     }
   }
 </style>
