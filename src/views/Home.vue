@@ -41,12 +41,12 @@
 </template>
 
 <script>
-import Topnav from "../components/Topnav.vue";
+  import Topnav from '../components/Topnav.vue'
 
-export default {
-  name: "Home.vue",
-  components: {Topnav},
-};
+  export default {
+    name: 'Home.vue',
+    components: {Topnav},
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -59,18 +59,32 @@ export default {
   }
   .features {
     margin: 64px auto;
-    width: 400px;
+    padding-left: 16px;
+    @media (max-width: 564px) {
+      > ul {
+        justify-content: center;
+      }
+    }
     @media (min-width: 800px) {
       width: 800px;
+      > ul {
+        > li {
+          width: 50%;
+        }
+      }
     }
     @media (min-width: 1200px) {
       width: 1200px;
+      > ul {
+        > li {
+          width: 33.3333%;
+        }
+      }
     }
-    >ul {
+    > ul {
       display: flex;
       flex-wrap: wrap;
-      >li {
-        width: 400px;
+      > li {
         margin: 16px 0;
         display: grid;
         justify-content: start;
@@ -80,16 +94,16 @@ export default {
         "icon text";
         grid-template-columns: 80px auto;
         grid-template-rows: 1fr auto;
-        >svg {
+        > svg {
           grid-area: icon;
           width: 64px;
           height: 64px;
         }
-        >h3 {
+        > h3 {
           grid-area: title;
           font-size: 28px;
         }
-        >p {
+        > p {
           grid-area: text
         }
       }
@@ -102,7 +116,7 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    >.actions {
+    > .actions {
       padding: 8px 0;
       a {
         margin: 0 8px;

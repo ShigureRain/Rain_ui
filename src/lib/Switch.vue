@@ -1,23 +1,21 @@
 <template>
-  <div>
-    <button class="rain-switch" :class="{'rain-checked':value}" @click="toggle"><span></span></button>
-  </div>
+  <button :class="{'rain-checked':value}" class="rain-switch" @click="toggle"><span></span></button>
 </template>
 
 <script lang="ts">
 
-export default {
-  name: 'Switch',
-  props: {
-    value: Boolean,
-  },
-  setup(props, context) {
-    const toggle = () => {
-      context.emit('update:value', !props.value)  //this.$emit
+  export default {
+    name: 'Switch',
+    props: {
+      value: Boolean,
+    },
+    setup(props, context) {
+      const toggle = () => {
+        context.emit('update:value', !props.value)  //this.$emit
+      }
+      return {toggle}
     }
-    return {toggle}
   }
-}
 </script>
 
 <style lang="scss">
