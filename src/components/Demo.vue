@@ -26,7 +26,7 @@
       Button
     },
     props: {
-      component: String
+      component: Object
     },
     setup(props) {
       const html = computed(() => {
