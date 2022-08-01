@@ -18,28 +18,28 @@
 </template>
 
 <script lang="ts">
-import {inject, Ref} from 'vue'
+  import {inject, Ref} from 'vue'
 
-export default {
-  name: 'Topnav',
-  props: {
-    toggleMenuButtonVisible: {
-      type: Boolean,
-      default: false
-    }
-  },
-  setup() {
-    const asideVisible = inject<Ref<boolean>>('asideVisible')
-    const toggleAside = () => {
-      asideVisible.value = !asideVisible.value
-    }
-    return {toggleAside}
-  },
-}
+  export default {
+    name: 'Topnav',
+    props: {
+      toggleMenuButtonVisible: {
+        type: Boolean,
+        default: false
+      }
+    },
+    setup() {
+      const asideVisible = inject<Ref<boolean>>('asideVisible')
+      const toggleAside = () => {
+        asideVisible.value = !asideVisible.value
+      }
+      return {toggleAside}
+    },
+  }
 </script>
 
 <style lang="scss" scoped>
-  $color: #007974;
+  $color: #2d527c;
   .topnav {
     color: $color;
     display: flex;

@@ -50,11 +50,11 @@
 </script>
 
 <style lang="scss" scoped>
-  $green: #02bcb0;
+  $color: #2d527c;
   $border-radius: 4px;
-  $color: #007974;
+  $green: #2d527c;
   .topnavAndBanner {
-    background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
+    background: linear-gradient(45deg, rgba(48, 65, 81, 0.7) 0%, rgba(105, 108, 115, 0.8) 56%, rgba(186, 166, 159, 0.7) 100%);
     clip-path: ellipse(80% 60% at 50% 40%);
   }
   .features {
@@ -117,7 +117,7 @@
     align-items: center;
     flex-direction: column;
     > .actions {
-      padding: 8px 0;
+      padding: 16px 0;
       a {
         margin: 0 8px;
         background: $green;
