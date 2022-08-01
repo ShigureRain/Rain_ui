@@ -82,7 +82,7 @@
     }
   }
   aside {
-    background: linear-gradient(45deg, rgba(206, 232, 250, 1) 0%, rgba(197, 201, 209, 0.88) 85%);
+    background: linear-gradient(45deg, rgba(205, 228, 245, 1) 0%, rgba(204, 207, 214, 1) 85%);
     width: 150px;
     position: fixed;
     top: 0;
