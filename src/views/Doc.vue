@@ -39,17 +39,17 @@
 </template>
 
 <script lang="ts">
-  import Topnav from '../components/Topnav.vue';
-  import {inject, Ref} from 'vue';
+  import Topnav from '../components/Topnav.vue'
+  import {inject, Ref} from 'vue'
 
   export default {
     name: 'Doc',
     components: {Topnav},
     setup() {
-      const asideVisible = inject<Ref<boolean>>('asideVisible');
-      return {asideVisible};
+      const asideVisible = inject<Ref<boolean>>('asideVisible')
+      return {asideVisible}
     },
-  };
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -82,7 +82,7 @@
     }
   }
   aside {
-    background: lightblue;
+    background: linear-gradient(45deg, rgba(206, 232, 250, 1) 0%, rgba(197, 201, 209, 0.88) 85%);
     width: 150px;
     position: fixed;
     top: 0;
@@ -92,10 +92,11 @@
     z-index: $aside-index;
     > h2 {
       margin-bottom: 4px;
-      padding: 0 16px;
+      padding: 8px 16px;
     }
     > ol {
       > li {
+        padding-bottom: 2px;
         > a {
           display: block;
           padding: 4px 16px;
