@@ -15,13 +15,13 @@ Rain UI 是一款基于 Vue 3 和 TypeScript 的 UI 组件库。
 打开终端运行下列命令：
 
 ```
-npm install rain-ui
+npm install rain-vue3-ui
 ```
 
 或
 
 ```
-yarn add rain-ui
+yarn add rain-vue3-ui
 ```
 
 ### 开始使用
