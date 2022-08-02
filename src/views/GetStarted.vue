@@ -15,7 +15,7 @@
 &lt;script&gt;
   import {Button, Tabs, Tab, Switch, Dialog, openDialog} from "rain-vue3-ui"
   export default {
-    components: {Button}
+    components: {Button, Tabs, Tab, Switch, Dialog, openDialog}
   }
 &lt;/script&gt;
  </code></pre>
