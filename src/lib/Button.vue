@@ -1,49 +1,49 @@
 <template>
-  <button :class='classes' class="rain-button" :disabled="disabled">
+  <button :class='classes' :disabled="disabled" class="rain-button">
     <span v-if="loading" class="rain-loadingIndicator"></span>
     <slot/>
   </button>
 </template>
 
 <script lang="ts">
-import {computed} from 'vue'
+  import {computed} from 'vue'
 
-export default {
-  name: 'Button',
-  props: {
-    theme: {
-      type: String,
-      default: 'button'
-    },
-    size: {
-      type: String,
-      default: 'normal'
-    },
-    level: {
-      type: String,
-      default: 'normal'
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    loading: {
-      type: Boolean,
-      default: false
-    }
-  },
-  setup(props) {
-    const {theme, size, level} = props
-    const classes = computed(() => {
-      return {
-        [`rain-theme-${theme}`]: theme,
-        [`rain-size-${size}`]: size,
-        [`rain-level-${level}`]: level,
+  export default {
+    name: 'Button',
+    props: {
+      theme: {
+        type: String,
+        default: 'button'
+      },
+      size: {
+        type: String,
+        default: 'normal'
+      },
+      level: {
+        type: String,
+        default: 'normal'
+      },
+      disabled: {
+        type: Boolean,
+        default: false,
+      },
+      loading: {
+        type: Boolean,
+        default: false
       }
-    })
-    return {classes}
+    },
+    setup(props) {
+      const {theme, size, level} = props
+      const classes = computed(() => {
+        return {
+          [`rain-theme-${theme}`]: theme,
+          [`rain-size-${size}`]: size,
+          [`rain-level-${level}`]: level,
+        }
+      })
+      return {classes}
+    }
   }
-}
 </script>
 
 <style lang="scss">
@@ -184,10 +184,10 @@ export default {
       border-color: $blue $blue $blue transparent;
       border-style: solid;
       border-width: 2px;
-      animation: gulu-spin 1s infinite linear;
+      animation: rain-spin 1s infinite linear;
     }
   }
-  @keyframes gulu-spin {
+  @keyframes rain-spin {
     0% {
       transform: rotate(0deg)
     }
