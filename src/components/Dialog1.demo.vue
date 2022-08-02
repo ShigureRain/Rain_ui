@@ -22,9 +22,6 @@
   import {
     ref
   } from 'vue'
-  import {
-    openDialog
-  } from '../lib/openDialog'
   export default {
     components: {
       Dialog,
