@@ -1,6 +1,6 @@
 import './lib/rain.scss';
 import './index.scss';
-import './lib/iconfont.js';
+import './assets/iconfont.js';
 import {createApp} from 'vue';
 import App from './App.vue';
 import {router} from './router';
