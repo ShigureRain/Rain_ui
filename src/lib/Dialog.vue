@@ -22,49 +22,49 @@
 </template>
 
 <script lang="ts">
-import Button from './Button.vue'
+  import Button from './Button.vue'
 
-export default {
-  props: {
-    visible: {
-      type: Boolean,
-      default: false,
-    },
-    closeOnClickOverlay: { //是否点击遮罩层关闭
-      type: Boolean,
-      default: true,
-    },
-    ok: {
-      type: Function
-    },
-    cancel: {
-      type: Function
-    }
-  },
-  name: 'Dialog',
-  components: {Button},
-  setup(props, context) {
-    const close = () => {
-      context.emit('update:visible', false)
-    }
-    const ok = () => {
-      if (props.ok?.() !== false) {  //新语法 等价于 props.ok && props.ok() !== false
-        close()
+  export default {
+    props: {
+      visible: {
+        type: Boolean,
+        default: false,
+      },
+      closeOnClickOverlay: { //是否点击遮罩层关闭
+        type: Boolean,
+        default: true,
+      },
+      ok: {
+        type: Function
+      },
+      cancel: {
+        type: Function
       }
-    }
-    const cancel = () => {
-      if (props.cancel?.() !== false) {   //ok 和 cancel 支持 return false 阻止关闭
-        close()
+    },
+    name: 'Dialog',
+    components: {Button},
+    setup(props, context) {
+      const close = () => {
+        context.emit('update:visible', false)
       }
-    }
-    const onClickOverlay = () => {
-      if (props.closeOnClickOverlay) {
-        close()
+      const ok = () => {
+        if (props.ok && props.ok() !== false) {  //新语法 props.ok?.() !== false
+          close()
+        }
       }
+      const cancel = () => {
+        if (props.cancel && props.cancel() !== false) {   //ok 和 cancel 支持 return false 阻止关闭
+          close()
+        }
+      }
+      const onClickOverlay = () => {
+        if (props.closeOnClickOverlay) {
+          close()
+        }
+      }
+      return {close, ok, cancel, onClickOverlay}
     }
-    return {close, ok, cancel, onClickOverlay}
   }
-}
 </script>
 
 <style lang="scss">
